@@ -26,12 +26,18 @@ export default function handler(req, res) {
   if (method === "POST") {
     const { email, eventId } = req.body;
 
+    if (!email || !email.includes("@")) {
+      res.status(422).json({ message: "Invalid email adress" });
+      return;
+    }
+
     const newAllEvents = allEvents.map((elem) => {
       if (elem.id === eventId) {
         if (elem.emails_registered.includes(email)) {
           res
-            .status(201)
+            .status(409)
             .json({ message: "Error: This email has already been registered" });
+          return elem;
         }
         return {
           ...elem,
