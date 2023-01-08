@@ -1,13 +1,8 @@
 import Image from "next/image";
+import SingleEvent from "../../../src/components/Events/SingleEvent";
 
 export default function Event({ data }) {
-  return (
-    <div>
-      <Image src={data.image} width={1000} height={500} alt={data.title} />
-      <h1>{data.title}</h1>
-      <p>{data.description}</p>
-    </div>
-  );
+  return <SingleEvent data={data} />;
 }
 
 export async function getStaticPaths() {

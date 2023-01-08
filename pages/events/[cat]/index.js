@@ -1,21 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import CatEvent from "../../../src/components/Events/CatEvent";
 
 export default function EventsPerCity({ data, pageName }) {
-  return (
-    <div>
-      <h1>Events in {pageName}</h1>
-      <div>
-        {data.map((elem) => (
-          <Link key={elem.id} href={`/events/${elem.city}/${elem.id}`} passHref>
-            <Image width={300} height={300} alt={elem.title} src={elem.image} />
-            <h2>{elem.title}</h2>
-            <p>{elem.description}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
+  return <CatEvent data={data} pageName={pageName} />;
 }
 
 export async function getStaticPaths() {

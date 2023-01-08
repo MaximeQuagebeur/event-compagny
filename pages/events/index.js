@@ -1,20 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import EventsPage from "../../src/components/Events";
 
 export default function Events({ data }) {
-  return (
-    <div>
-      <h1>Évènements</h1>
-      <div>
-        {data.map((elem) => (
-          <Link key={elem.id} href={`/events/${elem.id}`}>
-            <Image src={elem.image} alt={elem.title} width={200} height={200} />
-            <h2>{elem.title}</h2>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
+  return <EventsPage data={data} />;
 }
 
 export async function getStaticProps() {
