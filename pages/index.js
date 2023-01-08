@@ -1,12 +1,10 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
+import Home from "../src/components/Home";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ data }) {
+export default function HomePage({ data }) {
   return (
     <>
       <Head>
@@ -15,29 +13,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <nav>
-          <Link href="/">Accueil</Link>
-          <Link href="/events">Évènements</Link>
-          <Link href="/about">À propos</Link>
-        </nav>
-      </header>
-
-      <main className={styles.main}>
-        {data.map((elem) => (
-          <Link key={elem.id} href={`/events/${elem.id}`}>
-            <Image src={elem.image} alt={elem.title} width={200} height={200} />
-            <h2>{elem.title}</h2>
-            <p>{elem.description}</p>
-          </Link>
-        ))}
-      </main>
-
-      <footer className={styles.footer}>
-        <p>
-          &#169; 2023 Maxime Quagebeur - Prictice Project Built With Next.js
-        </p>
-      </footer>
+      <Home data={data} />
     </>
   );
 }
